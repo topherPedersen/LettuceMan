@@ -1,0 +1,61 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+    <meta charset="UTF-8" />
+    <title>Making your first Phaser 3 Game - Part 2</title>
+    <script src="//cdn.jsdelivr.net/npm/phaser@3.11.0/dist/phaser.js"></script>
+    <style type="text/css">
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<script type="text/javascript">
+
+
+var config = {
+    type: Phaser.AUTO,
+    width: window.innerWidth,
+    height: window.innerHeight,
+    input: {
+        gamepad: true
+    },
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+
+
+    var game = new Phaser.Game(config);
+    function preload () {
+        this.load.image('Lettuceman', 'assets/LettuceMan.png');
+        this.load.image('Background', 'assets/LettuceManBackground.png');
+        
+    }
+    function create () {
+      // Add Background to Game
+      // NOTE: divide height and width by 2 to get center position
+      this.add.image(window.innerWidth / 2, window.innerHeight / 2, 'Background');
+      
+      // ** Create LettuceMan **
+       this.physics.add.sprite(window.innerWidth / 2, window.innerHeight / 2, 'Lettuceman');
+    }
+
+    function update () {
+    }
+</script>
+
+</body>
+</html>
